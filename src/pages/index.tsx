@@ -1,11 +1,10 @@
 import { ReactElement } from 'react';
 import { FiCalendar, FiUser } from 'react-icons/fi';
-import Header from '../components/Header';
 // import { GetStaticProps } from 'next';
 
 // import { getPrismicClient } from '../services/prismic';
 
-// import commonStyles from '../styles/common.module.scss';
+import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
 
 // interface Post {
@@ -30,9 +29,8 @@ import styles from './home.module.scss';
 export default function Home(): ReactElement {
   return (
     <>
-      <Header />
       <main className={styles.container}>
-        <div className={styles.content}>
+        <div className={commonStyles.content}>
           <article className={styles.post}>
             <h1 className={styles.title}>
               Lorem ipsum dolor sit amet consectetur

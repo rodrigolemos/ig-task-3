@@ -5,40 +5,36 @@
   justify-content: center;
 }
 
-.content {
-  width: 60%;
-}
-
 .post {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .title {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-bottom: 0.62rem;
   color: var(--title);
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size: 1.12rem;
   font-weight: normal;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: var(--sub-title);
 }
 
 .info {
-  font-size: 14px;
+  font-size: 0.87rem;
   color: var(--info);
   display: flex;
 
   div {
     display: flex;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 0.9rem;
 
     svg {
-      margin-right: 5px;
+      margin-right: 0.3rem;
     }
   }
 }
