@@ -1,1 +1,12 @@
-// TODO
+.header {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+.content {
+  width: 60%;
+}
