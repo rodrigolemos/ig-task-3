@@ -6,7 +6,7 @@
 }
 
 .post {
-  margin-bottom: 1.25rem;
+  margin-bottom: 3rem;
 }
 
 .title {
@@ -37,4 +37,13 @@
       margin-right: 0.3rem;
     }
   }
+}
+
+.more {
+  font-size: 1.12rem;
+  line-height: 22px;
+  text-align: justify;
+  border: none;
+  background-color: var(--background-color);
+  color: var(--primary);
 }
