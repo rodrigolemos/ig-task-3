@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Prismic from '@prismicio/client';
 import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -98,12 +99,26 @@ export default function Post({ post }: PostProps): ReactElement {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  //   const prismic = getPrismicClient();
-  //   const posts = await prismic.query(TODO);
+  const prismic = getPrismicClient();
+  const posts = await prismic.query(
+    [Prismic.predicates.at('document.type', 'posts')],
+    {
+      fetch: ['posts.title', 'posts.subtitle', 'posts.author'],
+      pageSize: 2,
+    }
+  );
+
+  const paths = posts.results.map(post => {
+    return {
+      params: {
+        slug: post.uid,
+      },
+    };
+  });
 
   return {
-    paths: [], // indicates that no page needs be created at build time
-    fallback: 'blocking', // indicates the type of fallback
+    paths,
+    fallback: 'blocking',
   };
 };
 
