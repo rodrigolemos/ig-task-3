@@ -1,6 +1,7 @@
 import { useState, ReactElement } from 'react';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
 import Prismic from '@prismicio/client';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -63,26 +64,28 @@ export default function Home({ postsPagination }: HomeProps): ReactElement {
       <main className={styles.container}>
         <div className={commonStyles.content}>
           {posts.map(post => (
-            <article key={`post-${post.uid}`} className={styles.post}>
-              <h1 className={styles.title}>{post.data.title}</h1>
-              <h2 className={styles.subtitle}>{post.data.subtitle}</h2>
-              <div className={styles.info}>
-                <div>
-                  <FiCalendar />
-                  <span>
-                    {format(
-                      new Date(post.first_publication_date),
-                      'dd MMM yyyy',
-                      { locale: ptBR }
-                    )}
-                  </span>
+            <Link href={`/post/${post.uid}`} key={`post-${post.uid}`}>
+              <article key={`post-${post.uid}`} className={styles.post}>
+                <h1 className={styles.title}>{post.data.title}</h1>
+                <h2 className={styles.subtitle}>{post.data.subtitle}</h2>
+                <div className={styles.info}>
+                  <div>
+                    <FiCalendar />
+                    <span>
+                      {format(
+                        new Date(post.first_publication_date),
+                        'dd MMM yyyy',
+                        { locale: ptBR }
+                      )}
+                    </span>
+                  </div>
+                  <div>
+                    <FiUser />
+                    <span>{post.data.author}</span>
+                  </div>
                 </div>
-                <div>
-                  <FiUser />
-                  <span>{post.data.author}</span>
-                </div>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
           {hasNextPage && (
             <button
