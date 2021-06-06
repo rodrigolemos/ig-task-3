@@ -7,6 +7,14 @@
 
 .post {
   margin-bottom: 3rem;
+  padding: 1rem;
+  cursor: default;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateX(0.2rem) translateY(-0.2rem);
+    box-shadow: -0.2rem 0.3rem var(--primary);
+  }
 }
 
 .title {
@@ -46,4 +54,5 @@
   border: none;
   background-color: var(--background-color);
   color: var(--primary);
+  cursor: pointer;
 }
