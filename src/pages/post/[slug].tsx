@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import Prismic from '@prismicio/client';
 import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
 import { format } from 'date-fns';
@@ -33,6 +34,12 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps): ReactElement {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Carregando...</div>;
+  }
+
   const calculateReadingTime = (content: string): number => {
     const words = content.split(' ').length;
     return Math.ceil(words / 200);
@@ -118,7 +125,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: true,
   };
 };
 
