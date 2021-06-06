@@ -55,17 +55,12 @@ export default function Home({ postsPagination }: HomeProps): ReactElement {
   const [hasNextPage, setHasNextPage] = useState<string | null>(next_page);
 
   const fetchNextPage = async (): Promise<void> => {
-    try {
-      const response = await fetch(hasNextPage);
-      if (response.status === 200) {
-        const data = await response.json();
-
+    fetch(hasNextPage)
+      .then(response => response.json())
+      .then(data => {
         setPosts([...posts, ...handlePostResult(data.results)]);
         setHasNextPage(data.next_page);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+      });
   };
 
   return (
