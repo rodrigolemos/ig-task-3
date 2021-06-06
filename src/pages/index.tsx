@@ -61,8 +61,8 @@ export default function Home({ postsPagination }: HomeProps): ReactElement {
 
   return (
     <>
-      <main className={styles.container}>
-        <div className={commonStyles.content}>
+      <main className={commonStyles.container}>
+        <div className={commonStyles.wrapper}>
           {posts.map(post => (
             <Link href={`/post/${post.uid}`} key={`post-${post.uid}`}>
               <article key={`post-${post.uid}`} className={styles.post}>

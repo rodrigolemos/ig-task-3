@@ -1,4 +1,11 @@
-.content {
+.container {
+  background-color: var(--background-color);
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
   width: 60%;
 
   @media screen and (max-width: 768px) {

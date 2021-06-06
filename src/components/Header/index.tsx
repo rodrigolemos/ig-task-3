@@ -7,7 +7,7 @@ import styles from './header.module.scss';
 export default function Header(): ReactElement {
   return (
     <header className={styles.header}>
-      <div className={commonStyles.content}>
+      <div className={commonStyles.wrapper}>
         <Link href="/">
           <img src="/logo.svg" alt="logo" />
         </Link>
