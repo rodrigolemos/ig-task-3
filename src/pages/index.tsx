@@ -34,11 +34,12 @@ const handlePostResult = (posts: any): Post[] => {
   return posts.map((post: Post) => {
     return {
       uid: post.uid,
-      first_publication_date: format(
-        new Date(post.first_publication_date),
-        'dd MMM yyyy',
-        { locale: ptBR }
-      ),
+      first_publication_date: post.first_publication_date,
+      // first_publication_date: format(
+      //   new Date(post.first_publication_date),
+      //   'dd MMM yyyy',
+      //   { locale: ptBR }
+      // ),
       data: {
         title: post.data.title,
         subtitle: post.data.subtitle,
@@ -78,7 +79,13 @@ export default function Home({ postsPagination }: HomeProps): ReactElement {
               <div className={styles.info}>
                 <div>
                   <FiCalendar />
-                  <span>{post.first_publication_date}</span>
+                  <span>
+                    {format(
+                      new Date(post.first_publication_date),
+                      'dd MMM yyyy',
+                      { locale: ptBR }
+                    )}
+                  </span>
                 </div>
                 <div>
                   <FiUser />
