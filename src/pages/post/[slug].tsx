@@ -61,9 +61,11 @@ export default function Post({ post }: PostProps): ReactElement {
     <>
       <main className={commonStyles.container}>
         <div className={styles.wrapper}>
-          <div className={styles.banner}>
-            <img src={post.data.banner.url} alt="banner" />
-          </div>
+          {post.data.banner.url && (
+            <div className={styles.banner}>
+              <img src={post.data.banner.url} alt="banner" />
+            </div>
+          )}
           <article className={styles.article}>
             <h1 className={styles.title}>{post.data.title}</h1>
             <section className={styles.info}>
@@ -144,7 +146,7 @@ export const getStaticProps: GetStaticProps = async context => {
       title: response.data.title,
       subtitle: response.data.subtitle,
       banner: {
-        url: response.data.banner.url,
+        url: response.data.banner.url || null,
       },
       author: response.data.author,
       content: response.data.content,
