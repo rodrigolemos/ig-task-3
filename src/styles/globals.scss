@@ -11,4 +11,17 @@
   --sub-title: #D7D7D7;
   --info: #BBBBBB;
   --primary: #FF57B2;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1D23;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3C3F56;
 }

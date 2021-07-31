@@ -1,8 +1,17 @@
+.wrapper {
+  width: 60%;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+}
+
 .post {
   margin-bottom: 3rem;
   padding: 1rem;
   cursor: default;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     transform: translateX(0.2rem) translateY(-0.2rem);

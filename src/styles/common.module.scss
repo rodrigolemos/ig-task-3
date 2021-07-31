@@ -1,14 +1,7 @@
 .container {
   background-color: var(--background-color);
-  min-height: 90vh;
+  width: 100vw;
+  min-height: 85vh;
   display: flex;
   justify-content: center;
-}
-
-.wrapper {
-  width: 60%;
-
-  @media screen and (max-width: 768px) {
-    width: 90%;
-  }
 }

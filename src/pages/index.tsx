@@ -62,12 +62,12 @@ export default function Home({ postsPagination }: HomeProps): ReactElement {
   return (
     <>
       <main className={commonStyles.container}>
-        <div className={commonStyles.wrapper}>
+        <div className={styles.wrapper}>
           {posts.map(post => (
             <Link href={`/post/${post.uid}`} key={`post-${post.uid}`}>
               <article key={`post-${post.uid}`} className={styles.post}>
-                <h1 className={styles.title}>{post.data.title}</h1>
-                <h2 className={styles.subtitle}>{post.data.subtitle}</h2>
+                <h2 className={styles.title}>{post.data.title}</h2>
+                <h3 className={styles.subtitle}>{post.data.subtitle}</h3>
                 <div className={styles.info}>
                   <div>
                     <FiCalendar />
