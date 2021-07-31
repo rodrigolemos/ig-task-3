@@ -83,10 +83,10 @@ export default function Post({ post }: PostProps): ReactElement {
                 <FiUser />
                 <span>{post.data.author}</span>
               </div>
-              <div>
+              {/* <div>
                 <FiClock />
                 <span>{readingTime} min</span>
-              </div>
+              </div> */}
             </section>
             {newContent.map(content => (
               <div className={styles.post} key={content.heading}>
