@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Prismic from '@prismicio/client';
-import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
+import { FiCalendar, FiUser } from 'react-icons/fi';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
@@ -40,17 +40,7 @@ export default function Post({ post }: PostProps): ReactElement {
     return <div>Carregando...</div>;
   }
 
-  const calculateReadingTime = (content: string): number => {
-    const words = content.split(' ').length;
-    return Math.ceil(words / 200);
-  };
-
-  let readingTime = 0;
-
   const newContent = post.data.content.map(content => {
-    readingTime += calculateReadingTime(content.heading);
-    readingTime += calculateReadingTime(content.body[0].text);
-
     return {
       heading: content.heading,
       body: RichText.asHtml(content.body),
@@ -83,10 +73,6 @@ export default function Post({ post }: PostProps): ReactElement {
                 <FiUser />
                 <span>{post.data.author}</span>
               </div>
-              {/* <div>
-                <FiClock />
-                <span>{readingTime} min</span>
-              </div> */}
             </section>
             {newContent.map(content => (
               <div className={styles.post} key={content.heading}>
