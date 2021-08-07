@@ -40,7 +40,6 @@
   font-size: 0.87rem;
   color: var(--info);
   display: flex;
-  margin-bottom: 3rem;
 
   div {
     display: flex;
@@ -70,5 +69,26 @@
 
   * {
     color: var(--sub-title);
+  }
+}
+
+.tags {
+  margin: 2rem 0;
+  color: var(--primary);
+  font-size: 0.7rem;
+
+  ul {
+    display: flex;
+    list-style: none;
+
+    li {
+      clip-path: polygon(100% 0%, 100% 100%, 10px 99%, 0% 50%, 10px 0);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: var(--background-color-light);
+      padding: 0.45rem 1rem;
+      padding-left: 1.2rem;
+      margin-right: 1rem;
+    }
   }
 }

@@ -26,6 +26,9 @@ interface Post {
         text: string;
       }[];
     }[];
+    tags?: {
+      category: string;
+    }[];
   };
 }
 
@@ -74,6 +77,13 @@ export default function Post({ post }: PostProps): ReactElement {
                 <span>{post.data.author}</span>
               </div>
             </section>
+            <div className={styles.tags}>
+              <ul>
+                {post.data.tags.map(tag => (
+                  <li key={tag.category}>{tag.category}</li>
+                ))}
+              </ul>
+            </div>
             {newContent.map(content => (
               <div className={styles.post} key={content.heading}>
                 <h1>{content.heading}</h1>
@@ -98,7 +108,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await prismic.query(
     [Prismic.predicates.at('document.type', 'posts')],
     {
-      fetch: ['posts.title', 'posts.subtitle', 'posts.author'],
+      fetch: ['posts.title', 'posts.subtitle', 'posts.author', 'posts.tags'],
       pageSize: 2,
     }
   );
@@ -135,6 +145,7 @@ export const getStaticProps: GetStaticProps = async context => {
         url: response.data.banner.url || null,
       },
       author: response.data.author,
+      tags: response.data.tags,
       content: response.data.content,
     },
   };

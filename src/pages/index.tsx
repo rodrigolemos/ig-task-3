@@ -18,6 +18,9 @@ interface Post {
     title: string;
     subtitle: string;
     author: string;
+    tags?: {
+      category: string;
+    }[];
   };
 }
 
@@ -40,6 +43,7 @@ const handlePostResult = (posts: any): Post[] => {
         title: post.data.title,
         subtitle: post.data.subtitle,
         author: post.data.author,
+        tags: post.data.tags,
       },
     };
   });
@@ -84,6 +88,13 @@ export default function Home({ postsPagination }: HomeProps): ReactElement {
                     <span>{post.data.author}</span>
                   </div>
                 </div>
+                <div className={styles.tags}>
+                  <ul>
+                    {post.data.tags.map(tag => (
+                      <li key={tag.category}>{tag.category}</li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             </Link>
           ))}
@@ -107,7 +118,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const postsResponse = await prismic.query(
     [Prismic.predicates.at('document.type', 'posts')],
     {
-      fetch: ['posts.title', 'posts.subtitle', 'posts.author'],
+      fetch: ['posts.title', 'posts.subtitle', 'posts.author', 'posts.tags'],
       pageSize: 2,
     }
   );
